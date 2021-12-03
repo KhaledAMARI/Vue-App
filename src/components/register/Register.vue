@@ -2,7 +2,7 @@
   <v-card class="mx-auto mt-9 px-7" width="700">
     <v-card-title class="text-h2 justify-center "> Registration Form </v-card-title>
     <v-card-text>
-      <v-text-field label="Username" v-model="username" prepend-icon="mdi-account" />
+      <v-text-field label="name" v-model="name" prepend-icon="mdi-account" />
       <v-text-field label="Email" v-model="email" prepend-icon="mdi-email" />
       <v-text-field
       label="Password"

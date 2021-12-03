@@ -1,11 +1,11 @@
-import router from '../../router'
+// import router from '../../router'
 import UserService from '../../services/UserService'
 
 export default {
   data () {
     return {
       showPassword: false,
-      username: '',
+      name: '',
       email: '',
       password: ''
     }
@@ -13,12 +13,13 @@ export default {
   methods: {
     async registerUser () {
       const newUSer = {
-        username: this.username,
+        name: this.name,
         email: this.email,
         password: this.password
       }
-      await UserService.register(newUSer)
-      router.push('/login')
+      const response = await UserService.register(newUSer)
+      localStorage.setItem('token', response.data.token)
+      // router.push('/login')
     }
   }
 }

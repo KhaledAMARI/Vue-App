@@ -18,7 +18,7 @@ export default {
         password: this.password
       }
       const response = await UserService.register(newUSer)
-      localStorage.setItem('token', response.data.token)
+      this.$store.dispatch('setToken', response.data.token)
       // router.push('/login')
     }
   }

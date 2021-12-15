@@ -9,7 +9,7 @@ export default {
       data: newUser
     })
   },
-  async login (user, token) {
+  async login (user) {
     return await axios({
       method: 'post',
       url: `${serverUrl}v1/users/login`,

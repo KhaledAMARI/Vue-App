@@ -4,7 +4,6 @@
     <v-card-text>
       <v-text-field label="Please enter your confirmation code" v-model="code" />
     </v-card-text>
-    <span>{{ message }}</span>
     <v-card-actions class="mb-10">
       <v-btn @click="() => confirmUser()" outlined min-width="200" color="success" class="mx-auto">Confirm</v-btn>
     </v-card-actions>

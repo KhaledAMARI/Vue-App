@@ -28,6 +28,11 @@ const routes = [
     path: '/confirm_mail',
     name: 'Confirm_mail',
     component: () => import('../components/confirm_mail/Confirm_mail.vue')
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import('../components/about/About.vue')
   }
 ]
 

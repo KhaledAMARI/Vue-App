@@ -9,6 +9,22 @@ export default {
       data: newUser
     })
   },
+  async login (user, token) {
+    return await axios({
+      method: 'post',
+      url: `${serverUrl}v1/users/login`,
+      data: user
+    })
+  },
+  async userHome () {
+    return await axios({
+      headers: {
+        authorization: `Bearer ${this.$store.getters.getConfirmationToken}}`
+      },
+      method: 'get',
+      url: `${serverUrl}v1/users`
+    })
+  },
   async confirmUserMail (email) {
     console.log(email)
     return await axios({

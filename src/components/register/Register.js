@@ -1,5 +1,6 @@
-// import router from '../../router'
+import router from '../../router'
 import UserService from '../../services/UserService'
+import MessageService from '../../services/MessageService'
 
 export default {
   data () {
@@ -17,9 +18,19 @@ export default {
         email: this.email,
         password: this.password
       }
-      const response = await UserService.register(newUSer)
-      this.$store.dispatch('setToken', response.data.token)
-      // router.push('/login')
+      try {
+        const registerResponse = await UserService.register(newUSer)
+        await this.$store.dispatch('setConfirmationToken', registerResponse.data.confirmation_Token)
+        await this.$store.dispatch('setRegistredUserEmail', newUSer.email)
+        await MessageService.addMessage({
+          email: newUSer.email,
+          code: this.$store.getters.getConfirmationToken,
+          delay: 30
+        })
+        router.push('/confirm_mail')
+      } catch ({ error }) {
+        throw error
+      }
     }
   }
 }

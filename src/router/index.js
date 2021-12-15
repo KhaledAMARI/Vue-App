@@ -13,22 +13,22 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: () => import('../components/register/Register.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../components/login/Login.vue')
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import('../components/dashboard/Dashboard.vue')
+  },
+  {
+    path: '/confirm_mail',
+    name: 'Confirm_mail',
+    component: () => import('../components/confirm_mail/Confirm_mail.vue')
   }
-  // {
-  //   path: '/login',
-  //   name: 'Login',
-  //   component: () => import('../components/login/Login.vue')
-  // },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: () => import('../components/about/About.vue')
-  // },
-  // {
-  //   path: '/dashboard',
-  //   name: 'Dashboard',
-  //   component: () => import('../components/dashboard/Dashboard.vue')
-  // }
 ]
 
 const router = new VueRouter({

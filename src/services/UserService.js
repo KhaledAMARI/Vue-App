@@ -16,10 +16,10 @@ export default {
       data: user
     })
   },
-  async userHome () {
+  async userHome (token) {
     return await axios({
       headers: {
-        authorization: `Bearer ${this.$store.getters.getConfirmationToken}}`
+        authorization: `Bearer ${token}`
       },
       method: 'get',
       url: `${serverUrl}v1/users`

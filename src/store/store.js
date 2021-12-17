@@ -40,7 +40,7 @@ export default new Vuex.Store({
       return state.confirmationToken
     },
     getLoginToken (state) {
-      return state.LoginToken
+      return state.loginToken
     },
     getRegistredUserEmail (state) {
       return state.registredUserEmail

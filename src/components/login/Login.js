@@ -15,9 +15,13 @@ export default {
         email: this.email,
         password: this.password
       }
-      const response = await UserService.login(user)
-      await this.$store.dispatch('setLoginToken', response.data.loginToken)
-      router.push('/dashboard')
+      try {
+        const response = await UserService.login(user)
+        await this.$store.dispatch('setLoginToken', response.data.loginToken)
+        router.push('/dashboard')
+      } catch (error) {
+        alert(error)
+      }
     }
   }
 }

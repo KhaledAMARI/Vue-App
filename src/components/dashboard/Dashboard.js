@@ -2,11 +2,16 @@ import UserService from '../../services/UserService'
 export default {
   data () {
     return {
-      user: ''
+      user: {}
     }
   },
-  async mounted () {
-    const response = await UserService.userHome()
-    this.user = response.data
+  async created () {
+    this.user = await this.getLoggedUserInfo()
+  },
+  methods: {
+    async getLoggedUserInfo () {
+      const response = await UserService.userHome(this.$store.getters.getLoginToken)
+      return response.data.user
+    }
   }
 }

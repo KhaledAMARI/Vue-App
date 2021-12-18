@@ -20,7 +20,7 @@ export default {
     return await axios({
       method: 'post',
       url: `${serverUrl}v1/auth/confirm_email`,
-      data: { email: email }
+      data: { email }
     })
   }
 }

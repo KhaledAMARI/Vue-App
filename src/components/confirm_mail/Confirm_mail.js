@@ -16,18 +16,16 @@ export default {
   },
   async created () {
     this.message = await this.getTokenMessage()
-    console.log(typeof this.message.expiresIn)
   },
   methods: {
     async getTokenMessage () {
-      const response = await MessageService.getMessage(this.$store.getters.getRegistredUserEmail)
+      const response = await MessageService.getMessage(localStorage.getItem('token'))
       return response.data.message
     },
     async confirmUser () {
       const isValidToken = (this.message.code === this.code) && ((new Date(this.message.expiresIn)).getTime() >= (new Date()).getTime())
       if (isValidToken) {
-        await this.$store.dispatch('setConfirmationToken', null)
-        await AuthService.confirmUserMail(this.$store.getters.getRegistredUserEmail)
+        await AuthService.confirmUserMail(localStorage.getItem('token'))
         await this.$store.dispatch('setRegistredUserEmail', null)
         router.push('/login')
       } else {

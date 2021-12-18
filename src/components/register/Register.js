@@ -20,11 +20,11 @@ export default {
       }
       try {
         const registerResponse = await AuthService.register(newUSer)
-        await this.$store.dispatch('setConfirmationToken', registerResponse.data.confirmation_Token)
+        localStorage.setItem('token', registerResponse.data.token)
+        const confirmationToken = registerResponse.data.confirmation_Token
         await this.$store.dispatch('setRegistredUserEmail', newUSer.email)
         await MessageService.createMessage({
-          email: newUSer.email,
-          code: this.$store.getters.getConfirmationToken,
+          code: confirmationToken,
           delay: 30
         })
         router.push('/confirm_mail')

@@ -17,10 +17,10 @@ export default {
       }
       try {
         const response = await AuthService.login(user)
-        await this.$store.dispatch('setLoginToken', response.data.loginToken)
+        localStorage.setItem('token', response.data.token)
         router.push('/dashboard')
       } catch (error) {
-        alert(error)
+        console.log(error)
       }
     }
   }

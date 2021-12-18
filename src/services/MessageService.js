@@ -9,7 +9,7 @@ export default {
       data: { email }
     })
   },
-  async addMessage (message) {
+  async createMessage (message) {
     return await axios({
       method: 'post',
       url: `${serverUrl}v1/messages/new_message`,

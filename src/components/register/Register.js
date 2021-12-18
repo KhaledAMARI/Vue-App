@@ -22,7 +22,7 @@ export default {
         const registerResponse = await AuthService.register(newUSer)
         await this.$store.dispatch('setConfirmationToken', registerResponse.data.confirmation_Token)
         await this.$store.dispatch('setRegistredUserEmail', newUSer.email)
-        await MessageService.addMessage({
+        await MessageService.createMessage({
           email: newUSer.email,
           code: this.$store.getters.getConfirmationToken,
           delay: 30

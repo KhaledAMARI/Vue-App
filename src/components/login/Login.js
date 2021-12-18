@@ -1,4 +1,4 @@
-import UserService from '../../services/UserService.js'
+import AuthService from '../../services/AuthService.js'
 import router from '../../router/index.js'
 
 export default {
@@ -16,7 +16,7 @@ export default {
         password: this.password
       }
       try {
-        const response = await UserService.login(user)
+        const response = await AuthService.login(user)
         await this.$store.dispatch('setLoginToken', response.data.loginToken)
         router.push('/dashboard')
       } catch (error) {

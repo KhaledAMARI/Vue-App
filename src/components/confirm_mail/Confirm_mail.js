@@ -1,5 +1,5 @@
 import router from '../../router/index.js'
-import UserService from '../../services/UserService'
+import AuthService from '../../services/AuthService'
 import MessageService from '../../services/MessageService'
 
 export default {
@@ -27,7 +27,7 @@ export default {
       const isValidToken = (this.message.code === this.code) && ((new Date(this.message.expiresIn)).getTime() >= (new Date()).getTime())
       if (isValidToken) {
         await this.$store.dispatch('setConfirmationToken', null)
-        await UserService.confirmUserMail(this.$store.getters.getRegistredUserEmail)
+        await AuthService.confirmUserMail(this.$store.getters.getRegistredUserEmail)
         await this.$store.dispatch('setRegistredUserEmail', null)
         router.push('/login')
       } else {

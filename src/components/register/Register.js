@@ -12,17 +12,12 @@ export default {
     }
   },
   methods: {
-    async registerUser () {
-      const newUSer = {
-        name: this.name,
-        email: this.email,
-        password: this.password
-      }
+    async registerUser (event) {
+      const newUser = Object.fromEntries(new FormData(event.target))
       try {
-        const registerResponse = await AuthService.register(newUSer)
+        const registerResponse = await AuthService.register(newUser)
         localStorage.setItem('token', registerResponse.data.token)
         const confirmationToken = registerResponse.data.confirmation_Token
-        await this.$store.dispatch('setRegistredUserEmail', newUSer.email)
         await MessageService.createMessage({
           code: confirmationToken,
           delay: 30

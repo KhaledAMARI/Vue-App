@@ -25,8 +25,7 @@ export default {
     async confirmUser () {
       const isValidToken = (this.message.code === this.code) && ((new Date(this.message.expiresIn)).getTime() >= (new Date()).getTime())
       if (isValidToken) {
-        await AuthService.confirmUserMail(localStorage.getItem('token'))
-        await this.$store.dispatch('setRegistredUserEmail', null)
+        await AuthService.confirmUserMail()
         router.push('/login')
       } else {
         alert('Invalid or expired Token')

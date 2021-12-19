@@ -16,11 +16,13 @@ export default {
       data: user
     })
   },
-  async confirmUserMail (email) {
+  async confirmUserMail () {
     return await axios({
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      },
       method: 'post',
-      url: `${serverUrl}v1/auth/confirm_email`,
-      data: { email }
+      url: `${serverUrl}v1/auth/confirm_email`
     })
   }
 }
